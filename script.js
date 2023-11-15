@@ -59,3 +59,4 @@ const bookOutput = (book) => {
 const newdiv = document.querySelector(".test");
 console.log(newdiv)
 
+document.querySelector("main").innerHTML = content;
