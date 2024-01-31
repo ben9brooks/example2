@@ -31,7 +31,7 @@ document.getElementById("output").innerHTML = `
 `;
 
 const content = `
-<h2>My Phone: ${myPhone.model}</h2>
+<h1 class="phone_model phone_name" id="model">My Phone: ${myPhone.model}</h1>
 <ul>
     <li>Color: ${myPhone.color}</li>
     <li>Front Camera(s): ${myPhone.frontCameras}</li>
@@ -42,6 +42,15 @@ const content = `
     <li>Age: ${myPhone.phoneAge()} days</li>
 </ul>
 `;
+{/* <article class="phone" id="everyday">   </article> */}
+const newArticle = document.createElement("article"); 
+newArticle.classList.add("phone");
+newArticle.setAttribute("id", "everyday");
+newArticle.innerHTML = content;
+
+const main = document.querySelector("main");
+main.prepend(newArticle);
+
 
 console.log(myPhone.dateAcquired);
 console.log(myPhone.phoneAge());
@@ -59,4 +68,29 @@ const bookOutput = (book) => {
 const newdiv = document.querySelector(".test");
 console.log(newdiv)
 
-document.querySelector("main").innerHTML = content;
+// document.querySelector("main").innerHTML = content;
+
+
+
+
+const navContent = `
+    <li><a href='#'>Home</a></li>
+    <li><a href='#'>About</a></li>
+`;
+
+function createNavMenu(document) {
+    // add the list items above into an unordered list (<ul>)
+    const ul = document.createElement("ul");
+    ul.innerHTML = navContent;
+    // add the ul into a nav container (<nav>)
+    const nav = document.createElement("nav");
+    nav.appendChild(ul);
+    // give the nav element the class "main-navigation"
+    nav.classList.add("main-navigation");
+    // append the nav element to the existing element with class "siteheader"
+    const header = document.querySelector(".siteheader")
+    header.append(nav);
+}
+
+//test it:
+createNavMenu(document);
